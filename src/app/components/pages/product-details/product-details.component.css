@@ -1,0 +1,13 @@
+img {
+  padding: 40px 60px;
+  width: 100%;
+  object-position: center;
+  object-fit: contain;
+}
+.modal-dialog {
+  z-index: 25;
+  pointer-events: fill;
+}
+.carousel-section {
+  width: 500px;
+}

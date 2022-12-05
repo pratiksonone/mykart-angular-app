@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg bg-white position-fixed top-0 w-100">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-md-4 me-md-5" routerLink="home">
+            <img src="../../../assets/images/mykart-logo.png" alt="Bootstrap" width="90" height="40">
+        </a>
+        <div class="collapse navbar-collapse bg-primary bg-gradient px-4 py-2" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-white fw-bold " aria-current="page" routerLink="home"
+                        routerLinkActive="active">Home</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex align-items-baseline mx-md-5 btn border-0" routerLink="cart" routerLinkActive="active">
+            <div class="position-relative">
+                <i class="bi bi-cart2 fs-1 text-primary">
+                </i>
+                <span
+                    class="badge bg-danger rounded-circle fs-small position-absolute top-0 start-50">{{cartItemsLength}}</span>
+            </div>
+            <p class="mb-0 fs-5 fw-semibold">Cart</p>
+        </div>
+
+        <form class="d-flex px-md-3 col-7" role="search" *ngIf="showSearchBar">
+            <input class="form-control me-md-2 px-md-2 my-3" type="search" placeholder="Search..." aria-label="Search"
+                #searchText>
+            <button class="btn btn-outline-primary px-md-2 p-1 ms-1 my-3" type="submit"
+                (click)="getProductsBySearch(searchText)">Search</button>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon toggle-btn"></span>
+        </button>
+    </div>
+</nav>

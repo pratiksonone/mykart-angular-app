@@ -1,0 +1,27 @@
+input {
+  width: 50px;
+}
+td {
+  vertical-align: middle;
+}
+.cart-items-section {
+  /* width: 65%; */
+  max-height: 487px;
+  overflow-y: scroll;
+}
+.cart-items-section::-webkit-scrollbar-thumb {
+  background-color: rgb(180, 188, 205);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-clip: content-box;
+}
+.cart-items-section::-webkit-scrollbar {
+  width: 10px;
+}
+.pricing-section {
+  width: 380px;
+  height: 400px;
+}
+a:hover {
+  color: cornflowerblue;
+}

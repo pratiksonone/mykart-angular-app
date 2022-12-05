@@ -1,0 +1,11 @@
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold text-danger">{{errorStatus?errorStatus:"404"}}</h1>
+        <p class="fs-3  bg-warning px-5">
+            {{errorMessage?errorMessage:"Opps! Page not found"}}
+        <p class="lead">
+            {{errorMessage?"Sorry! Try again after sometime":"The page you’re looking for doesn’t exist."}}
+        </p>
+        <a class="btn btn-primary" (click)="goToHome()" *ngIf="!errorMessage">Go Home</a>
+    </div>
+</div>

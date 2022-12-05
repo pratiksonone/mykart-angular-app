@@ -1,0 +1,15 @@
+.fs-extra-small {
+  font-size: 12px;
+}
+.bg-curve {
+  z-index: -1;
+}
+.card-image {
+  width: 100%;
+  object-fit: contain;
+}
+@media screen and (max-width: 600px) {
+  .card {
+    width: 11rem !important;
+  }
+}

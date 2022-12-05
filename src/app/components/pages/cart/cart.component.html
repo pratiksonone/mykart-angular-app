@@ -1,0 +1,95 @@
+<div class="mt-5 pt-5 bg-light">
+    <div class="row h-75 justify-content-center m-0 ">
+        <div class="bg-white border p-3 mb-5 mt-2 col-12 col-lg-8 cart-items-section">
+            <div *ngIf="!cartIsEmpty">
+                <h4 class="text-center fw-bold border-bottom border-2">
+                    You have {{TotalProductsLength}} products in your cart
+                </h4>
+                <table class="table" *ngIf="!cartIsEmpty">
+                    <thead>
+                        <tr class="text-center bg-primary text-white">
+                            <th scope="col" class="d-none d-md-block">Preview</th>
+                            <th scope="col" class="text-start">Product Details</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center bg-white" *ngFor="let cartItem of cartItems;index as index">
+                            <th scope="row" class="d-none d-md-block">
+                                <img src="{{cartItem?.thumbnail}}" alt="" height="100" width="100">
+                            </th>
+                            <td class="text-start">
+                                <a class="m-0 p-0 fw-semibold fs-5 text-decoration-none btn border-0"
+                                    routerLink="{{cartItem.id}}">{{cartItem?.title}}</a>
+                                <p class="my-0 fs-small fw-semibold text-black-50">{{cartItem?.brand}}</p>
+                                <p class="mb-0 fs-5 fw-bold">
+                                    {{((cartItem.price*80)-((cartItem.discountPercentage/100)*(cartItem.price*80)))|currency:"INR"|slice:0:-3}}
+                                </p>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button [disabled]="stopCounter" class="p-0 pt-1 border-0 bg-white"
+                                        (click)="addQuantity('decrease',quantity,cartItem.id)">
+                                        <i class="bi bi-dash-circle fs-4 mt-2 text-primary"></i>
+                                    </button>
+                                    <input type="text" placeholder="1" class="text-center mx-1 border border-3 fw-bold"
+                                        value="1" #quantity disabled>
+                                    <button class="p-0 pt-1 border-0 bg-white"
+                                        (click)="addQuantity('increase',quantity,cartItem.id)">
+                                        <i class="bi bi-plus-circle fs-4 mt-2 text-primary"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-danger fw-bold"
+                                    (click)="removeProduct(index)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="cartIsEmpty" class="opacity-75">
+                <div
+                    class="text-center border-bottom border-2 text-danger d-flex align-items-center justify-content-center">
+                    <h4 class="mb-1 me-2 fw-bold ">Your cart is empty</h4>
+                    <i class="bi bi-exclamation-circle-fill fs-3"></i>
+                </div>
+                <div class="bg-white w-100 h-100">
+                    <img src="../../../../assets/images/empty-cart.png" alt="cart is empty"
+                        style="width: 50vh; height: 36vh;" class="d-md-block mx-auto p-5">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 bg-white pricing-section mt-md-2 px-3 border mb-5" *ngIf="!cartIsEmpty">
+            <p class="fw-bold fs-5 p-2 pb-0 border-bottom border-2 text-black-50 ">Price Details</p>
+            <div class="border-bottom border-2 px-2">
+                <div class="d-flex align-items-center justify-content-between">
+                    <p>Price ({{TotalProductsLength}} items)</p>
+                    <p class="fs-5 fw-bold">{{totalPrice|currency:"INR"|slice:0:-3}}</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p>Discount</p>
+                    <p class="fs-5 fw-bold text-success">- {{totalPrice-totalDiscountedPrice|currency:"INR"|slice:0:-3}}
+                    </p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p>Discounted Price</p>
+                    <p class="fs-5 fw-bold">{{totalDiscountedPrice|currency:"INR"|slice:0:-3}}</p>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p>Delivery Charges</p>
+                    <p class="fs-5 fw-bold">{{40|currency:"INR"|slice:0:-3}}</p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between py-3 border-bottom border-2 px-2 border">
+                <h5 class="fw-bold m-0">Total Amount</h5>
+                <h4 class="fw-bold m-0">{{(totalDiscountedPrice+40)|currency:"INR"|slice:0:-3}}</h4>
+            </div>
+            <p class="fw-bold text-success text-center m-0 p-2">You will save
+                {{discountPrice-40|currency:"INR"|slice:0:-3}} on
+                this order</p>
+            <button class="btn btn-outline-primary fw-bold d-block mx-auto" (click)="checkout()">PLACE ORDER</button>
+        </div>
+    </div>
+</div>

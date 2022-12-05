@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+html::-webkit-scrollbar-thumb {
+  background-color: rgb(180, 188, 205);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-clip: content-box;
+}
+
+html::-webkit-scrollbar {
+  width: 16px;
+}
+.fs-small {
+  font-size: 14px;
+}
+.model-content {
+  width: 400px;
+  height: 300px;
+}
+* {
+  font-family: "Baloo Bhai 2", cursive;
+}

@@ -1,0 +1,81 @@
+<aside>
+    <h3 class="mt-5 text-center text-primary border-bottom border-3 pb-3 my-3 fw-bold pt-3">Filters<i
+            class="bi bi-funnel-fill fs-4"></i></h3>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button bg-primary text-white fs-5 border border-3 border-white" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseOne">
+                    Categories
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                    <div class="scroll-section overflow-scroll d-block mx-auto border-bottom border-3">
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center"
+                                    [class.active]="selectedCategoryIndex === 0" (click)="getProducts('all',0)">
+                                    All Categories
+                                    <span class="badge bg-primary rounded-pill">100</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center"
+                                    *ngFor="let category of categories;index as i" (click)="getProducts(category,i+1)"
+                                    [class.active]="selectedCategoryIndex === i+1">
+                                    {{category}}
+                                    <span class="badge bg-primary rounded-pill">5</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed bg-primary text-white fs-5  border border-3 border-white"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
+                    aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    Price
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    <div>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center"
+                                [class.active]="selectedCategoryIndex === 0" (click)="getProducts('all',0)">
+                                All Price Range
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center"
+                                *ngFor="let price of priceFilters;index as i" (click)="getProducts(price,i+1)"
+                                [class.active]="selectedCategoryIndex === i+1">
+                                {{price}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="mt-4 text-center text-primary border-bottom border-3 pb-3 my-3 fw-bold">Best Seller</h3>
+    <img src="http://obest.org/html/shopo/assets/images/banners/widget-banner.png" alt="brown women shoes"
+        class="d-block mx-auto my-3">
+    <h3 class="mt-4 text-center text-primary border-bottom border-3 pb-3 my-3 fw-bold">Testimonials</h3>
+    <div class="bg-dark bg-opacity-10 pt-4 mx-4">
+        <img src="https://media-exp1.licdn.com/dms/image/C5603AQHzD6PNWH150A/profile-displayphoto-shrink_100_100/0/1630439033707?e=1674086400&v=beta&t=bCLdwHj2SqzcEAyGNn-jt5Dv4D_hY9RdBKG9IsE4-Yg"
+            alt="profile picture of ceo" width="70" height="70" class="rounded-circle d-block mx-auto">
+        <p class="text-center mt-3 fw-bolder mb-0">Pratik Sonone</p>
+        <p class="text-muted fs-small fw-semibold text-center border-bottom border-3 mx-5 pb-2 mb-2 border-primary">
+            Ceo &
+            Founder
+        </p>
+        <p class="pb-3 fw-semibold text-center text-black-50 px-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+            expedita itaque repellendus
+        </p>
+    </div>
+</aside>

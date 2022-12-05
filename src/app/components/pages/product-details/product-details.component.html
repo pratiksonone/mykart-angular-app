@@ -1,0 +1,79 @@
+<div class="container pt-5 mb-5 details-page">
+    <div class="pt-5">
+        <div class="d-flex align-items-center mb-3 mt-3 btn btn-outline-primary col-6 col-sm-4 col-lg-2 p-1 justify-content-evenly"
+            (click)="backToProducts()">
+            <i class="bi bi-caret-left-fill fs-5 mt-1"></i>
+            <p class="mb-0 fw-semibold">Back to Products</p>
+        </div>
+        <div class="row m-0 border border-1 shadow">
+            <div class="col-10 col-md-4 h-50 p-2 d-block mx-auto carousel-section">
+                <ngb-carousel class="bg-black">
+                    <ng-template ngbSlide *ngFor="let image of selectedProductData.images">
+                        <div class="picsum-img-wrapper">
+                            <img [src]="image" alt="Random first slide" class="d-block mx-auto" height="400" />
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+            <div class="col-12 col-md-6 p-2 ps-sm-4 ps-lg-2">
+                <div>
+                    <p class="fw-bold text-black-50 mb-0">{{selectedProductData.brand}}</p>
+                    <h5 class="fw-bold mb-0">{{selectedProductData.title}}</h5>
+                    <p class="text-black-50 fw-semibold">{{selectedProductData.description}}</p>
+                    <p class="text-success fw-bold mb-0">Special price</p>
+                    <div class="d-flex align-items-center justify-content-start">
+                        <h3 class="fw-semibold me-3">
+                            {{((selectedProductData.price*80)-((selectedProductData.discountPercentage/100)*(selectedProductData.price*80)))|currency:"INR"}}
+                        </h3>
+                        <h6 class="text-decoration-line-through text-muted me-3">
+                            {{selectedProductData.price*80|currency:"INR"}}
+                        </h6>
+                        <h6 class="text-success fw-bold">{{selectedProductData.discountPercentage}}% off</h6>
+                    </div>
+
+                    <div class="fs-5 d-flex align-items-center mb-2">
+                        <h5
+                            class="text-white bg-success py-1 ps-2 pe-1 rounded-pill mb-0 rounded-end border border-end-0">
+                            {{selectedProductData.rating}}
+                        </h5>
+                        <ngb-rating [(rate)]="selectedProductData.rating"
+                            class="rounded-pill rounded-start bg-primary m-0 py-0 pe-2 ps-1 text-white border">
+                        </ngb-rating>
+                    </div>
+                    <div>
+                        <h5 class="text-danger fw-semibold">Hurry Only {{selectedProductData.stock}} left!</h5>
+                    </div>
+                    <div>
+                        <p class="text-black-50 fw-semibold mb-0">services</p>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-arrow-repeat text-primary me-1"></i>
+                            <p class="mb-0 fw-semibold">10 Days Return Policy</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-cash-coin text-success me-1"></i>
+                            <p class="mb-0 fw-semibold">Cash on Delivery available</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-truck text-danger me-1"></i>
+                            <p class="mb-0 fw-semibold">Delivery in 7 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="align-bottom mt-3">
+                    <button class="btn btn-warning border border-secondary fw-bold me-3">
+                        Buy Now
+                    </button>
+                    <button class="btn btn-danger border border-secondary fw-bold" (click)="addToCart()"
+                        [disabled]="productAddedToCart">
+                        {{productAddedToCart?"Added":"Add"}} to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="alreadyPresentInCart"
+    class="position-absolute top-0 end-0 start-0 bottom-0 bg-black bg-opacity-50 modal-dialog">
+    <app-modal>
+    </app-modal>
+</div>
